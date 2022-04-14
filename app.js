@@ -5,7 +5,7 @@ const parsing = require('./public/js/newParser')
 
 const app = express()
 
-const port = 3000
+const port = 4000
 
 app.use(express.static('public'))
 app.use('/css',express.static(__dirname +'public/css'))
