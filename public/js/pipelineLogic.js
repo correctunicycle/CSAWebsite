@@ -1,3 +1,6 @@
+const { cbrt } = require("mathjs")
+
+
 
 
 function checkForDataDependencies(PP, RowNumber){
@@ -27,12 +30,22 @@ function checkForDataDependencies(PP, RowNumber){
                         return 1
                     }
                     if(bigArray[why][2] == 2){
+                        console.log('stall prevented due to forwarding')
                         var oneIndex = why + 1
                         const ForText = document.createElement('ForwardingText'+why)
                         ForText.innerHTML ='Forwarding from instruction '+oneIndex+'s ALU output preventing stall <br /><br />'
                         document.querySelector('.PipelineLog').appendChild(ForText)
-                        
+                        return 0
 
+                        //stall prevented due to data forwarding from alu 
+                    }
+                    else if(bigArray[why][2] == 3){
+                        var oneIndex = why + 1
+                        const ForText = document.createElement('ForwardingText'+why)
+                        ForText.innerHTML ='Forwarding switched off so now printing data dependency being resolved from instruction '+oneIndex+'s <br /><br />'
+                        document.querySelector('.PipelineLog').appendChild(ForText)
+                        return 0
+                    
                         //stall prevented due to data forwarding from alu 
                     }
 
@@ -111,6 +124,8 @@ function checkForResourceDependencies(piepo,Ro){
 function updateFlags(pipeposit,RowN){
    switch(pipeposit){
        case 1:
+           //oh so this is for resource dependencies, 
+           //
            bigArray[RowN][7] = 1
            break
        case 2:
@@ -124,7 +139,12 @@ function updateFlags(pipeposit,RowN){
        case 4:
            bigArray[RowN][9] = 0
            bigArray[RowN][10] = 1
-           if(instructionTypeArray[RowN] == 1){
+            console.log('checking for data dependency, cb checked is:')
+            console.log(cb.checked)
+            console.log('this needs to be equal to 1 to enter if conditionasl')
+            console.log(instructionTypeArray[RowN])
+           if(instructionTypeArray[RowN] == 1 && cb.checked == true){//if maths instruction
+               console.log('Going into if conditional')
                bigArray[RowN][2] = 2
            }
            break

@@ -1,4 +1,18 @@
 
+var cb = document.getElementById('ForwardingOnOff');
+console.log('value of checkbox is:')
+console.log(cb.checked);
+
+
+document.getElementById('ForwardingOnOff').onclick = function(){
+    cb = document.getElementById('ForwardingOnOff');
+    console.log('value of checkbox is:')
+    console.log(cb.checked);
+}
+
+
+
+
 
 
 

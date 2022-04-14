@@ -128,5 +128,3 @@ function instructionType(){
 console.table(bigArray)
 
 
-const cb = document.getElementById('ForwardingOnOff');
-console.log(cb.checked);
