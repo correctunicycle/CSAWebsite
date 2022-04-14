@@ -42,7 +42,7 @@ function checkForDataDependencies(PP, RowNumber){
                     else if(bigArray[why][2] == 3){
                         var oneIndex = why + 1
                         const ForText = document.createElement('ForwardingText'+why)
-                        ForText.innerHTML ='Forwarding switched off so now printing data dependency being resolved from instruction '+oneIndex+'s <br /><br />'
+                        ForText.innerHTML ='instruction '+oneIndex+'s has written to mm, data dependency resolved even if forwarding is off<br /><br />'
                         document.querySelector('.PipelineLog').appendChild(ForText)
                         return 0
                     
@@ -151,11 +151,16 @@ function updateFlags(pipeposit,RowN){
        case 5:
         bigArray[RowN][10] = 0
         bigArray[RowN][11] = 1
+        if(instructionTypeArray[RowN] == 0){
         bigArray[RowN][2] = 3
-           break
-
-       case 6:
+    }
+    break
+    
+    case 6:
         bigArray[RowN][11] = 0
+        if(instructionTypeArray[RowN] == 1){
+        bigArray[RowN][2] = 3
+        }
         break
         case 7:
             for(let x = 7;x<=11;x++){
