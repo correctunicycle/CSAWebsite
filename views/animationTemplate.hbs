@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="/css/styleSheet.css" > 
+<title>Pipeline Animation Website</title>
+
+</head>
+
+<body style ="overflow-x: auto">
+
+
+    <h1>Pipeline Animation Website</h1>
+    Automatic Controls: <button id='autoPlay'>Generate Full Pipeline</button>
+    <button id='autoMode'>Generate Pipeline Step by Step</button>
+    Manual Controls: <button id='newProceed'>Insert new pipeline stage</button>
+    <button id='newStall'>Insert a stall </button>
+    <button id='skip'>Skip to next instruction </button>
+    <button id='undo'>Undo</button>
+    
+    <br>
+    <input type="checkbox" id="ForwardingOnOff" name="scales"
+         checked>
+  <label for="scales">Forwarding On/Off</label>
+
+    <img src="/img/Arrow2.png" class="positionArrow" style="position: absolute; top:205px; left: 92px;">
+    <div class="firstRow" style="position: relative;height: 140px;">
+    
+    <p style="position: relative; top: 60px;
+    white-space: nowrap;">
+        {{instruction1}} 
+    <div class="Pipeline1Row" style="display: inline-block; white-space:nowrap">
+
+    </div>
+
+    </div>
+        
+    
+    <div class="secondRow" style="position: relative;height: 95px;">
+
+    <p style="position: relative; top: 10px;
+    white-space: nowrap;">
+        {{instruction2}} 
+        
+    <div class="Pipeline2Row" style="display: inline-block; white-space:nowrap">
+
+    </div> 
+    </div> 
+
+    <div class="thirdRow" style="position: relative;
+    height: 95px;">
+
+    <p style="position: relative; top: 10px;
+    white-space: nowrap;">
+        {{instruction3}} 
+        
+    <div class="Pipeline3Row" style="display: inline-block; white-space:nowrap;">
+
+    </div> 
+    </div> 
+
+    <div class="fourthRow" style="position: relative;
+    height: 95px;">
+
+    <p style="position: relative; top: 10px;
+    white-space: nowrap;">
+        {{instruction4}} 
+        
+    <div class="Pipeline4Row" style="display: inline-block; white-space:nowrap;">
+
+    </div> 
+    </div> 
+
+    <div class="fifthRow" style="position: relative;
+    height: 95px;">
+
+    <p style="position: relative; top: 10px;
+    white-space: nowrap;">
+        {{instruction5}} 
+        
+    <div class="Pipeline5Row" style="display: inline-block; white-space:nowrap;">
+
+    </div> 
+    </div> 
+
+    
+        <h>Log of pipeline progress</h>
+        <br />
+        <br />
+        <div class="PipelineLog">
+
+
+        </div>
+
+
+
+    
+     <script>var instruction1 = '{{instruction1}}'
+               var instruction2  = '{{instruction2}}'
+               var instruction3  = '{{instruction3}}'
+               var instruction4 = '{{instruction4}}'
+               var instruction5 = '{{instruction5}}' 
+               var MA = ['{{instruction1}}','{{instruction2}}','{{instruction3}}','{{instruction4}}','{{instruction}}']
+        </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/9.4.5/math.js" integrity="sha512-R+I48DmxDONCcV2MyhKKVv9QYPzcmoSdNYBDNmHoJh2R4g6mqakFTBiIMYU9r/T0kK8y5Q/JvlQ8iRb5DdHV/A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha512-z4OUqw38qNLpn1libAN9BsoDx6nbNFio5lA6CuTp9NlK83b89hgyCVq+N5FdBJptINztxn1Z3SaKSKUS5UP60Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+       <script src = "/js/Setup.js"></script>
+       <script src = "/js/buttonControl2.js"> </script>
+       <script src = "/js/arrowControl.js"> </script>
+       <script src = "/js/pipelineLogic.js"> </script>
+        <script src = "/js/pipelineCreation.js"> </script>
+        
+    
+    </body>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="/css/styleSheet.css" > 
+<title>Pipeline Animation Website</title>
+
+</head>
+
+<body style ="overflow-x: auto">
+
+
+    <h1>Pipeline Animation Website</h1>
+
+    <button id='proceed'>Click here to proceed to next pipeline stage</button>
+   
+    <button id='stall'>Click here to stall </button>
+    <button type='reset'>Click here to reset </button>
+    <img src="/img/Arrow2.png" class="positionArrow" style="position: absolute; top:185px; left: 85px;">
+    <div class="firstRow" style="position: relative;overflow-x: auto;
+    overflow-y: auto;height: 140px;">
+    
+    <p style="position: relative; top: 60px;
+    white-space: nowrap;">
+        {{instruction1}} 
+    <div class="Pipeline1Row" style="display: inline-block; white-space:nowrap">
+
+    </div>
+
+    </div>
+        
+    
+    <div class="secondRow" style="position: relative;overflow-x: auto;
+    overflow-y: auto;height: 140px;">
+
+    <p style="position: relative; top: 10px;
+    white-space: nowrap;">
+        {{instruction2}} 
+        
+    <div class="Pipeline2Row" style="display: inline-block; white-space:nowrap">
+
+    </div> 
+    </div> 
+
+    <div class="thirdRow" style="position: relative;
+    overflow-y: auto;height: 140px;">
+
+    <p style="position: relative; top: 10px;
+    white-space: nowrap;">
+        {{instruction3}} 
+        
+    <div class="Pipeline3Row" style="display: inline-block; white-space:nowrap;">
+
+    </div> 
+    </div> 
+
+
+
+    
+   
+
+ 
+
+    
+
+    
+    <p style="position: absolute; top: 500px;">{{instruction3}} <img src="/img/ResizedPipelineBlock.png" alt="logo" style="position: relative; top:32px; left:150px"></p>
+    <p style="position: absolute; top: 600px;">{{instruction4}} <img src="/img/ResizedPipelineBlock.png" alt="logo" style="position: relative; top:32px; left:150px"></p>
+    <p style="position: absolute; top: 700px;">{{instruction5}} <img src="/img/ResizedPipelineBlock.png" alt="logo" style="position: relative; top:32px; left:150px"></p>
+    
+
+
+
+
+    
+     <script>var instruction1 = '{{instruction1}}'
+               var instruction2  = '{{instruction2}}'
+               var instruction3  = '{{instruction3}}'
+               var instruction4 = '{{instruction4}}'
+               var instruction5 = '{{instruction5}}' 
+        </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha512-z4OUqw38qNLpn1libAN9BsoDx6nbNFio5lA6CuTp9NlK83b89hgyCVq+N5FdBJptINztxn1Z3SaKSKUS5UP60Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+       <script src = "/js/masterFile.js"> </script>
+    
+    
+    </body>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="/css/pipelinetemplate.css" > 
+<title>Pipeline Animation Website</title>
+
+</head>
+
+<body>
+
+    <h1><br>Pipeline Animation Website</h1>
+    
+    <h2>Upload Machine Code here</h2>
+    <form action="/uploads/" enctype="multipart/form-data" method="POST"> 
+        <input type="file" name="myFile" />
+        <input type="submit" value="Upload a file"/>
+     </form>
+
+     
+    <form action="/exampleAnimation/" enctype="multipart/form-data" method="GET"> 
+        <button>Click Here to see an example animation
+        </button>
+        
+     </form>
+
+
+     <p1 id= "test" style=display:none > why is this not working.</p1>
+    
+    <h2>Example Pipeline Animation </h2>
+    <h3 class = "clockcycles">          C1           |          C2        |          C3        |          C4        |          C5        | </h3>
+    <!--
+        <div class= "box red"></div> 
+        <div class= "anything"></div>
+    -->
+        <div id="anchorbox">
+            <div class="arrow1"></div>
+            <div class="register1"></div>
+          
+            <div class="box2"></div>
+            <div class="box3"></div>
+            <div class="box4"></div>
+            <div class="arrow2"></div>
+            <div class="register2"></div>
+            
+            <div class="arrow3"></div>
+            <div class="arrow4"></div>
+            <div class="arrow5"></div>
+            <div class="arrow6"></div>
+            <div class="arrow7"></div>
+            <div class="arrow8"></div>
+            <div class="arrow9"></div>
+            <div class="arrow10"></div>
+            <div class="register3"></div>
+            <div class="circle1"></div>
+            <div class="circle2"></div>
+        
+            <div class="register4"></div>
+
+            <div class="textbox1">
+                <p id="text1" style=display:none>Instruction Fetch 
+                                                    From:
+                                                    Instruction Memory
+        </p>
+            </div>
+            
+            <div class="textbox2">
+                <p id="text2" style=display:none>Instruction Decode
+                                                 Using:
+                                                 Registers
+                                                    </p>
+            </div>
+
+            <div class="textbox3">
+                <p id="text3" style=display:none>Execute Operation
+                                                 Using:
+                                                 ALU
+                                                    </p>
+            </div>
+
+            <div class="textbox4">
+                <p id="text4" style=display:none>Write Results
+                                                 To:
+                                                 Register
+                                                    </p>
+            </div>
+    
+            <div class="circle3"></div>
+            
+          </div>
+          
+          
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha512-z4OUqw38qNLpn1libAN9BsoDx6nbNFio5lA6CuTp9NlK83b89hgyCVq+N5FdBJptINztxn1Z3SaKSKUS5UP60Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src = "/js/testBall.js"> </script>
+    
+    <p id= "manual"> This website is designed to generate pictorial representations of the pipelining of instructions through a CPU, like the prototype example above. <br /><br />
+        To use this tool first you must download the ARM GNU toolchain, which can be found <a href="https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm/downloads">here</a>. Once downloaded, you must add the /bin folder to your path. you can then assemble assembly language using the following command:
+        <br /><br />
+        arm-none-eabi-as Hello.S
+        <br /><br />
+        This will create an output file called a.out
+        For this to be readable to the human eye and for the webpage this must be coverted into plain text, which can be done using the objdump command
+        <br /><br />
+        arm-none-eabi-objdump -D -j .text a.out > yourOutputFile.txt
+        <br /><br />
+        You can then upload this file to the website and view the pipeline animation, although please note that the website only suppports the following, case sensitive, instructions:
+        <br /><br />
+        "ldur","stur","mov","movz","movk" "add","sub","addi","subi","and","ior","eor"
+        <br /><br />
+        There are 2 ways of creating the pipeline. A manual version where the user chooses the action of each instruction, and an automatic version that generates the pipeline for the user.
+        <br /><br />
+        It is recommended for students to try creating the pipeline manually first and then compare the results with the generated pipeline as a learning exercise.
+        <br />PLEASE NOTE: Use of the manual controls will invalidate the automatically generated pipeline, even if all pipeline stages are removed using the undo button. The page MUST be refreshed before the pipeline can be automatically generated.
+         
+    
+    
+    </p>
+    </body>
+
+
+    <script src = "/js/templateAnimation.js"> </script>
+
+
+<!--
+<body>
+
+<h1><img src="uomcrest.svg" width="200" height="300" alt="logo"><br>Pipeline Animation Website</h1>
+
+<h2>Upload/Paste Assembly File/Code here</h2>
+
+<h2>Pipieline Animation Here</h2>
+    <div class= "box red"></div> 
+<script>src = "https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.js" </script>
+<script>src = "main.js" </script>
+
+</body>
+
+</html>
+-->
