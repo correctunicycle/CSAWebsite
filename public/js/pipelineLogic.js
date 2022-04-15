@@ -1,10 +1,10 @@
-const { cbrt } = require("mathjs")
+
 
 
 
 
 function checkForDataDependencies(PP, RowNumber){
-    
+    console.table(bigArray)
     ////////console.log('data dependency function called')
     ////////console.log('pp is'+PP)
     ////////console.log('row number is '+RowNumber)
@@ -22,6 +22,7 @@ function checkForDataDependencies(PP, RowNumber){
                     if(bigArray[why][2] == 1){
                         const DataText = document.createElement('DataText'+why)
                         var oneIndex = why + 1
+                        console.log('Data dependency found on instruction'+oneIndex)
                         var oneIndex2 = RowNumber+1
                         DataText.innerHTML ='Data Dependency from instruction '+oneIndex+' causing instruction ' + oneIndex2+ ' to stall <br /><br />'
                         document.querySelector('.PipelineLog').appendChild(DataText)
@@ -29,7 +30,7 @@ function checkForDataDependencies(PP, RowNumber){
                         ////////console.log('data dependency function returning 1')
                         return 1
                     }
-                    if(bigArray[why][2] == 2){
+                    else if(bigArray[why][2] == 2){
                         console.log('stall prevented due to forwarding')
                         var oneIndex = why + 1
                         const ForText = document.createElement('ForwardingText'+why)
