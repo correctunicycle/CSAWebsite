@@ -3,7 +3,10 @@
 
 
 
+var dataDependencyCallCounter = 0
 function checkForDataDependencies(PP, RowNumber){
+    var DataDependencyArray = []
+    dataDependencyCallCounter++
     console.table(bigArray)
     ////////console.log('data dependency function called')
     ////////console.log('pp is'+PP)
@@ -15,51 +18,43 @@ function checkForDataDependencies(PP, RowNumber){
     else {
     ////////console.log('running else condition')
     var variablesArray = [bigArray[RowNumber][3],bigArray[RowNumber][5]]
-        for(let why = 0;why<=RowNumber;why++){
-            for(let y = 0;y<=1;y++){
-                ////////console.log('value of row number in for loop is '+why+' testing with variable number '+ y)
-                if(bigArray[why][1] == variablesArray[y] || bigArray[why][1] == variablesArray[y]  +',' || bigArray[why][1] +',' == variablesArray[y]){
-                    if(bigArray[why][2] == 1){
-                        const DataText = document.createElement('DataText'+why)
-                        var oneIndex = why + 1
-                        console.log('Data dependency found on instruction'+oneIndex)
-                        var oneIndex2 = RowNumber+1
-                        DataText.innerHTML ='Data Dependency from instruction '+oneIndex+' causing instruction ' + oneIndex2+ ' to stall <br /><br />'
-                        document.querySelector('.PipelineLog').appendChild(DataText)
-                        //stall due to data dependency on instruction x
-                        ////////console.log('data dependency function returning 1')
-                        return 1
-                    }
-                    else if(bigArray[why][2] == 2){
-                        console.log('stall prevented due to forwarding')
-                        var oneIndex = why + 1
-                        const ForText = document.createElement('ForwardingText'+why)
-                        ForText.innerHTML ='Forwarding from instruction '+oneIndex+'s ALU output preventing stall <br /><br />'
-                        document.querySelector('.PipelineLog').appendChild(ForText)
-                        return 0
-
-                        //stall prevented due to data forwarding from alu 
-                    }
-                    else if(bigArray[why][2] == 3){
-                        var oneIndex = why + 1
-                        const ForText = document.createElement('ForwardingText'+why)
-                        ForText.innerHTML ='instruction '+oneIndex+'s has written to mm, data dependency resolved even if forwarding is off<br /><br />'
-                        document.querySelector('.PipelineLog').appendChild(ForText)
-                        return 0
+    //console.log('variable array for instruction '+ RowNumber + ' :' +variablesArray)
+    for(let why = 0;why<=RowNumber;why++){
+        for(let y = 0;y<=1;y++){
+            ////////console.log('value of row number in for loop is '+why+' testing with variable number '+ y)
+            if(bigArray[why][1] == variablesArray[y] || bigArray[why][1] == variablesArray[y]  +',' || bigArray[why][1] +',' == variablesArray[y]){
+                DataDependencyArray.push(why)
+                console.log('data dependency found between instruction '+why+':'+bigArray[why][1]+'instruction '+RowNumber+ variablesArray[y])
+            }
+        }
+    }
+            if(DataDependencyArray.length != 0 ){
+            for(let ddIndex = 0 ;ddIndex<DataDependencyArray.length;ddIndex++){
+                console.log('checking dd indexe: '+ddIndex)
+                if(bigArray[DataDependencyArray[ddIndex]][2] == 1){
+                    //console.log('data dependency array: '+DataDependencyArray)
+                    console.log('data dependency function returning 1 from instruction '+ddIndex)
                     
-                        //stall prevented due to data forwarding from alu 
-                    }
-
+                    return 1
                 }
+                else if(bigArray[ddIndex][2] == 2){
+                    var oneIndex = why + 1
+                    const ForText = document.createElement('ForwardingText'+why)
+                    ForText.innerHTML ='Forwarding from instruction '+oneIndex+'s ALU output preventing stall <br /><br />'
+                    document.querySelector('.PipelineLog').appendChild(ForText)
+                }
+            }
+        }
+            console.log('data dependency function returning 0 for instruction '+RowNumber)
+            return 0
+
+                   
+
             }
 
 
 }
-return 0
 
-}
-
-}
 
 
 function checkForResourceDependencies(piepo,Ro){
@@ -140,28 +135,25 @@ function updateFlags(pipeposit,RowN){
        case 4:
            bigArray[RowN][9] = 0
            bigArray[RowN][10] = 1
-            console.log('checking for data dependency, cb checked is:')
-            console.log(cb.checked)
-            console.log('this needs to be equal to 1 to enter if conditionasl')
-            console.log(instructionTypeArray[RowN])
+            
            if(instructionTypeArray[RowN] == 1 && cb.checked == true){//if maths instruction
-               console.log('Going into if conditional')
+               console.log('instruction '+RowN +' clearing data dependency flag')
                bigArray[RowN][2] = 2
            }
            break
        case 5:
         bigArray[RowN][10] = 0
         bigArray[RowN][11] = 1
-        if(instructionTypeArray[RowN] == 0){
-        bigArray[RowN][2] = 3
-    }
+        
+        //bigArray[RowN][2] = 3
+    
     break
     
     case 6:
         bigArray[RowN][11] = 0
-        if(instructionTypeArray[RowN] == 1){
+        console.log('instruction '+RowN +' clearing data dependency flag')
         bigArray[RowN][2] = 3
-        }
+        
         break
         case 7:
             for(let x = 7;x<=11;x++){

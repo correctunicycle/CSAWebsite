@@ -88,9 +88,12 @@ document.getElementById("newProceed").onclick = function(){
 document.getElementById("autoPlay").onclick = function(){
     //autoplay is for the complete pipeline to be generated automatically in one click
     //while last instruction is not done, run automatic pipeline generation.
-    while(pipelineStageArray[4]<5){
+    for(let x = 0; x<pipelineStageArray.length;x++){
+        while(pipelineStageArray[x]<5){
         autoPlay()
         }
+    }
+   
 }
 
 
@@ -113,7 +116,7 @@ const autoPlay = () => {
     else if(checkForDataDependencies(pipelineStageArray[CurrentPosition - 1],instructionPositionArray[CurrentPosition -1]-1) == 0 && checkForResourceDependencies(pipelineStageArray[CurrentPosition-1],instructionPositionArray[CurrentPosition -1]-1) == 0 && checkPipelinePosition(instructionPositionArray[CurrentPosition-1],clickcounter) == 0){
         //if functions return appropriate values,
         pipelineStageArray[CurrentPosition - 1]++
-        
+        console.log('instruction '+(instructionPositionArray[CurrentPosition -1]-1)+ 'moving to next pipeline stage')
         
         insertImage(pipelineStageArray[CurrentPosition - 1],instructionArray[CurrentPosition - 1],instructionPositionArray[CurrentPosition - 1],0)
         insertText(pipelineStageArray[CurrentPosition - 1],instructionArray[CurrentPosition - 1],instructionPositionArray[CurrentPosition - 1],stallCountArray[CurrentPosition - 1])
