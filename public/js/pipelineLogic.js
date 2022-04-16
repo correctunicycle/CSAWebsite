@@ -24,7 +24,7 @@ function checkForDataDependencies(PP, RowNumber){
             ////////console.log('value of row number in for loop is '+why+' testing with variable number '+ y)
             if(bigArray[why][1] == variablesArray[y] || bigArray[why][1] == variablesArray[y]  +',' || bigArray[why][1] +',' == variablesArray[y]){
                 DataDependencyArray.push(why)
-                console.log('data dependency found between instruction '+why+':'+bigArray[why][1]+'instruction '+RowNumber+ variablesArray[y])
+                //console.log('data dependency found between instruction '+why+':'+bigArray[why][1]+'instruction '+RowNumber+ variablesArray[y])
             }
         }
     }
@@ -33,19 +33,21 @@ function checkForDataDependencies(PP, RowNumber){
                 console.log('checking dd indexe: '+ddIndex)
                 if(bigArray[DataDependencyArray[ddIndex]][2] == 1){
                     //console.log('data dependency array: '+DataDependencyArray)
-                    console.log('data dependency function returning 1 from instruction '+ddIndex)
+                    //console.log('data dependency function returning 1 from instruction '+ddIndex)
                     
                     return 1
                 }
-                else if(bigArray[ddIndex][2] == 2){
-                    var oneIndex = why + 1
-                    const ForText = document.createElement('ForwardingText'+why)
+                else if(bigArray[DataDependencyArray[ddIndex]][2] == 2 ){
+                    console.log('going into forwaring if conditional')
+                    var oneIndex = DataDependencyArray[ddIndex] + 1
+                    const ForText = document.createElement('ForwardingText'+DataDependencyArray[ddIndex])
                     ForText.innerHTML ='Forwarding from instruction '+oneIndex+'s ALU output preventing stall <br /><br />'
                     document.querySelector('.PipelineLog').appendChild(ForText)
+                    return 0
                 }
             }
         }
-            console.log('data dependency function returning 0 for instruction '+RowNumber)
+            //console.log('data dependency function returning 0 for instruction '+RowNumber)
             return 0
 
                    
@@ -61,11 +63,17 @@ function checkForResourceDependencies(piepo,Ro){
     if(Ro == 0){
         return 0
     }
+    else if(checkPipelinePosition(instructionPositionArray[CurrentPosition-1],clickcounter) == 1){
+        return 0
+    }
     else{
     switch(piepo){
         case 0:
             for(let x = 0; x<Ro;x++){
                 if(bigArray[x][7]== 1){
+                    const ForText = document.createElement('ResourcweDependencyText'+Ro)
+                    ForText.innerHTML ='Structural hazard: Instruction Memory in use, instruction' +(Ro+1)+ ' stalling <br /><br />'
+                    document.querySelector('.PipelineLog').appendChild(ForText)
                     return 1
                 }
             }
@@ -75,6 +83,9 @@ function checkForResourceDependencies(piepo,Ro){
         case 1:
             for(let x = 0; x<Ro;x++){
                 if(bigArray[x][8]== 1){
+                    const ForText = document.createElement('ResourcweDependencyText'+Ro)
+                    ForText.innerHTML ='Structural hazard: Registers in use, instruction' +(Ro+1)+ ' stalling <br /><br />'
+                    document.querySelector('.PipelineLog').appendChild(ForText)
                     return 1
                 }
             }
@@ -84,6 +95,9 @@ function checkForResourceDependencies(piepo,Ro){
         case 2:
             for(let x = 0; x<Ro;x++){
                 if(bigArray[x][9]== 1){
+                    const ForText = document.createElement('ResourcweDependencyText'+Ro)
+                    ForText.innerHTML ='Structural hazard: ALU in use, instruction' +(Ro+1)+ ' stalling <br /><br />'
+                    document.querySelector('.PipelineLog').appendChild(ForText)
                     return 1
                 }
             }
@@ -93,6 +107,9 @@ function checkForResourceDependencies(piepo,Ro){
         case 3:
             for(let x = 0; x<Ro;x++){
                 if(bigArray[x][10]== 1){
+                    const ForText = document.createElement('ResourcweDependencyText'+Ro)
+                    ForText.innerHTML ='Structural hazard: Main Memory in use, instruction' +(Ro+1)+ ' stalling <br /><br />'
+                    document.querySelector('.PipelineLog').appendChild(ForText)
                     return 1
                 }
             }
@@ -102,6 +119,9 @@ function checkForResourceDependencies(piepo,Ro){
         case 4:
             for(let x = 0; x<Ro;x++){
                 if(bigArray[x][11]== 1){
+                    const ForText = document.createElement('ResourcweDependencyText'+Ro)
+                    ForText.innerHTML ='Structural hazard: Instruction Memory in use, instruction' +(Ro+1)+ ' stalling <br /><br />'
+                    document.querySelector('.PipelineLog').appendChild(ForText)
                     return 1
                 }
             }
@@ -141,10 +161,14 @@ function updateFlags(pipeposit,RowN){
                bigArray[RowN][2] = 2
            }
            break
-       case 5:
-        bigArray[RowN][10] = 0
-        bigArray[RowN][11] = 1
-        
+           case 5:
+               bigArray[RowN][10] = 0
+               bigArray[RowN][11] = 1
+               if(instructionTypeArray[RowN] == 1 && cb.checked == true){//if maths instruction
+                   console.log('instruction '+RowN +' clearing data dependency flag')
+                   bigArray[RowN][2] = 4
+               }
+               
         //bigArray[RowN][2] = 3
     
     break

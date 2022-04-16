@@ -1,0 +1,17 @@
+
+newo.o:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <_start>:
+   0:	e3a00001 	ldur	X1, #1
+   4:	e59f1010 	ldur	X2, #2	
+   8:	e59f2010 	add	X3, X2, X1
+   8:	e59f2010 	sub	X4, X2, X1
+   8:	e59f2010 	stur	M1, X4
+
+
+
+			
+ 
