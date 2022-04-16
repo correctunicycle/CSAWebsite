@@ -5,7 +5,7 @@ const parsing = require('./public/js/newParser')
 
 const app = express()
 
-const port = 4000
+
 
 app.use(express.static('public'))
 app.use('/css',express.static(__dirname +'public/css'))
@@ -74,4 +74,9 @@ app.get('/exampleAnimation',(req,res,next)=>{
 
 //sets webpage to run on port 3000
 
-app.listen(port,() => console.info('listeining on port'))
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 8000;
+}
+app.listen(port);
+
