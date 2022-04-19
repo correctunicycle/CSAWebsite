@@ -1,6 +1,6 @@
 const express = require('express')
 const multer = require('multer')
-const parsing = require('./public/js/newParser')
+const parsing = require('./public/js/parser')
 
 
 const app = express()
