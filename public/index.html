@@ -96,24 +96,21 @@
         <script src = "/js/testBall.js"> </script>
     
     <p id= "manual"> This website is designed to generate pictorial representations of the pipelining of instructions through a CPU, like the prototype example above. <br /><br />
-        To use this tool first you must download the ARM GNU toolchain, which can be found <a href="https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm/downloads">here</a>. Once downloaded, you must add the /bin folder to your path. you can then assemble assembly language using the following command:
-        <br /><br />
-        arm-none-eabi-as Hello.S
-        <br /><br />
-        This will create an output file called a.out
-        For this to be readable to the human eye and for the webpage this must be coverted into plain text, which can be done using the objdump command
-        <br /><br />
-        arm-none-eabi-objdump -D -j .text a.out > yourOutputFile.txt
-        <br /><br />
-        You can then upload this file to the website and view the pipeline animation, although please note that the website only suppports the following, case sensitive, instructions:
+        The website only suppports the following, case sensitive, instructions:
         <br /><br />
         "ldur","stur","mov","movz","movk" "add","sub","addi","subi","and","ior","eor"
+        <br /><br />
+        Which are defined in the lecture content of the Computer Systems Architecture unit. (Note that these instructions differ slightly from the true ARMv8 instruction set).
+        <br /><br />
+        The other key limitation of this website currently is that it can only be used with 5 instructions, no more, no less.
+        Examples of assembly instructions which can be uploaded to the website can be found <a href="https://github.com/correctunicycle/AssemblyFilesForCSAWebsite">here</a>. See the readme for the formatting rules that must be adhered to when creating your own sequences of instructions.
         <br /><br />
         There are 2 ways of creating the pipeline. A manual version where the user chooses the action of each instruction, and an automatic version that generates the pipeline for the user. There is a toggle which turns data forwarding from the ALU output on or off, so that the difference can be observed. 
         <br /><br />
         It is recommended for students to try creating the pipeline manually first and then compare the results with the generated pipeline as a learning exercise.
         <br />PLEASE NOTE: Use of the manual controls will invalidate the automatically generated pipeline, even if all pipeline stages are removed using the undo button. The page MUST be refreshed before the pipeline can be automatically generated.
         <br /><br />
+    
         For curious students, the source code for this website can be viewed <a href="https://github.com/correctunicycle/CSAWebsite">here</a>. 
         This website has not been tested very extensively, and therefore it is possible there are bugs in the pipeline generation. If you believe to have found a bug please report it as an issue on the github and I will attempt to resolve it.
          
