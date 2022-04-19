@@ -10,16 +10,17 @@ const getMachineCode = (fileName) => {
     console.log(testArray.length)
     var LineByLine = text.split("\n")
     //splits code after start line by line
-    y = LineByLine.length
+    y = LineByLine.length -1
     var actualCode = []
     for(let x = 0; x < y; x++){
+        console.log(x)
         //splits code into indidual instructions
         var tabByTab = LineByLine[x].split('\t')
         console.log('tab by tab array is :')
 
         console.log(tabByTab)
         //tablength = tabByTab.length
-        actualCode.push(tabByTab[0])
+        actualCode.push(tabByTab[0]+' '+ tabByTab[1])
         
         console.log(tabByTab[0]+' '+ tabByTab[1])
             

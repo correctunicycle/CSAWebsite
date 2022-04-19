@@ -72,7 +72,7 @@ function checkForResourceDependencies(piepo,Ro){
             for(let x = 0; x<Ro;x++){
                 if(bigArray[x][7]== 1){
                     const ForText = document.createElement('ResourcweDependencyText'+Ro)
-                    ForText.innerHTML ='Structural hazard: Instruction Memory in use, instruction' +(Ro+1)+ ' stalling <br /><br />'
+                    ForText.innerHTML ='Structural hazard: Instruction Memory in use, instruction ' +(Ro+1)+ ' stalling <br /><br />'
                     document.querySelector('.PipelineLog').appendChild(ForText)
                     return 1
                 }
@@ -84,7 +84,7 @@ function checkForResourceDependencies(piepo,Ro){
             for(let x = 0; x<Ro;x++){
                 if(bigArray[x][8]== 1){
                     const ForText = document.createElement('ResourcweDependencyText'+Ro)
-                    ForText.innerHTML ='Structural hazard: Registers in use, instruction' +(Ro+1)+ ' stalling <br /><br />'
+                    ForText.innerHTML ='Structural hazard: Registers in use, instruction ' +(Ro+1)+ ' stalling <br /><br />'
                     document.querySelector('.PipelineLog').appendChild(ForText)
                     return 1
                 }
@@ -96,7 +96,7 @@ function checkForResourceDependencies(piepo,Ro){
             for(let x = 0; x<Ro;x++){
                 if(bigArray[x][9]== 1){
                     const ForText = document.createElement('ResourcweDependencyText'+Ro)
-                    ForText.innerHTML ='Structural hazard: ALU in use, instruction' +(Ro+1)+ ' stalling <br /><br />'
+                    ForText.innerHTML ='Structural hazard: ALU in use, instruction ' +(Ro+1)+ ' stalling <br /><br />'
                     document.querySelector('.PipelineLog').appendChild(ForText)
                     return 1
                 }
@@ -108,7 +108,7 @@ function checkForResourceDependencies(piepo,Ro){
             for(let x = 0; x<Ro;x++){
                 if(bigArray[x][10]== 1){
                     const ForText = document.createElement('ResourcweDependencyText'+Ro)
-                    ForText.innerHTML ='Structural hazard: Main Memory in use, instruction' +(Ro+1)+ ' stalling <br /><br />'
+                    ForText.innerHTML ='Structural hazard: Main Memory in use, instruction ' +(Ro+1)+ ' stalling <br /><br />'
                     document.querySelector('.PipelineLog').appendChild(ForText)
                     return 1
                 }
@@ -120,7 +120,7 @@ function checkForResourceDependencies(piepo,Ro){
             for(let x = 0; x<Ro;x++){
                 if(bigArray[x][11]== 1){
                     const ForText = document.createElement('ResourcweDependencyText'+Ro)
-                    ForText.innerHTML ='Structural hazard: Instruction Memory in use, instruction' +(Ro+1)+ ' stalling <br /><br />'
+                    ForText.innerHTML ='Structural hazard: Instruction Memory in use, instruction ' +(Ro+1)+ ' stalling <br /><br />'
                     document.querySelector('.PipelineLog').appendChild(ForText)
                     return 1
                 }
