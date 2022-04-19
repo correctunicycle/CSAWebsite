@@ -35,6 +35,7 @@ app.post('/uploads', upload.single('myFile'), (req, res, next) => {
   console.log('file is called '+ uploadedFile )
   //parsing imported from newparser file and gets individual assembly instructions from uploaded cose
   var derivedCode = parsing(uploadedFile)
+  console.log('Length of dervied code is :'+ derivedCode.length)
   console.log('derived assembly is:' + derivedCode)
   if (!file) {
     const error = new Error('Please upload a file')
